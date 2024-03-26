@@ -4,6 +4,7 @@ import "./globals.css";
 import Providers from "./utils/Providers";
 import { cn } from "@/lib/utils";
 import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,10 +19,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={cn("min-h-screen", inter.className)}>
-        <Navbar />
-        <Providers>{children}</Providers>
+    <html lang="en" className="h-full">
+      <body className={cn("h-full antialiased", inter.className)}>
+        <main className="relative flex flex-col min-h-screen">
+          <Providers>
+            <Navbar />
+            <div className="flex-grow flex-1">{children}</div>
+            <Footer />
+          </Providers>
+        </main>
       </body>
     </html>
   );

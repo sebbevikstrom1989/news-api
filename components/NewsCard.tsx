@@ -7,12 +7,15 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import Link from "next/link";
 
 interface NewsCardProps {
   description: string;
   title: string;
   country: string;
   imgUrl: string;
+  link: string;
+  rights: string;
 }
 
 export const NewsCard = ({
@@ -20,25 +23,32 @@ export const NewsCard = ({
   title,
   country,
   imgUrl,
+  rights,
+  link,
 }: NewsCardProps) => {
   return (
     <>
       {imgUrl ? (
-        <Card>
-          <CardHeader>
-            <img
-              src={imgUrl}
-              alt="hej"
-              className="w-full h-[200px] object-cover"
-            />
+        <Link href={link} target="_blank">
+          <Card className="h-full">
+            <CardHeader>
+              <img
+                src={imgUrl}
+                alt="hej"
+                className="w-full h-[200px] object-cover"
+              />
 
-            <CardTitle>{title}</CardTitle>
-            <CardDescription>{description}</CardDescription>
-          </CardHeader>
-          <CardFooter>
-            <p>{country}</p>
-          </CardFooter>
-        </Card>
+              <CardTitle>{title}</CardTitle>
+              <CardDescription>{description}</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p>{country}</p>
+            </CardContent>
+            <CardFooter className="text-center">
+              <p>{rights}</p>
+            </CardFooter>
+          </Card>
+        </Link>
       ) : null}
     </>
   );
