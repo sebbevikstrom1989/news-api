@@ -33,6 +33,7 @@ const fetchPost = async (page: number) => {
 
     const data = await response.json();
     const articles = data.articles || [];
+
     // Assuming each page has 9 articles and you want to paginate locally
     return articles.slice((page - 1) * 9, page * 9);
   } catch (error) {
