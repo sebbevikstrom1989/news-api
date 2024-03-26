@@ -5,12 +5,17 @@ import { Button } from "./ui/button";
 import { Loader2Icon } from "lucide-react";
 import { useEffect } from "react";
 import { useIntersection } from "@mantine/hooks";
+import { subMonths, format } from "date-fns";
 
 const fetchPost = async (page: number) => {
   try {
+    const oneMonthAgo = format(subMonths(new Date(), 1), "yyyy/MM/dd");
+
     // Adjust the URL to include query parameters directly or use URLSearchParams for dynamic parameters
     const queryParams = new URLSearchParams({
       q: "malmbanan",
+      from: oneMonthAgo,
+      countries: "se",
     });
 
     const url = `https://api.newscatcherapi.com/v2/search?${queryParams}`;
@@ -60,7 +65,7 @@ export const NewsCards = () => {
     }
   }, [entry, fetchNextPage]);
   const _posts = data?.pages.flatMap((page) => page);
-  console.log(_posts);
+
   if (isLoading)
     return (
       <div className="flex flex-col justify-center items-center">
