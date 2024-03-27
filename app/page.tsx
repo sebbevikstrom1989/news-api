@@ -6,6 +6,10 @@ export default function Home() {
       <div className="mx-auto w-full max-w-screen-xl px-2.5 md:px-20 py-24">
         <div className="prose lg:prose-xl mb-4">
           <p>
+            Välkommen till en enkelspårig sida - den handlar nämligen bara om
+            nyheter kopplade till Malmbanan.
+          </p>
+          <p>
             Alla järnvägar i norra Norrland är enkelspåriga. Den gäller även den
             hårt belastade Malmbanan mellan Luleå och Narvik där gruvbolagen
             transporterar sina produkter till hamnar och stålverk samt Stambanan
